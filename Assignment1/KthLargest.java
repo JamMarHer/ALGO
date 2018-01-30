@@ -11,18 +11,15 @@ import java.io.*;
 public class KthLargest {
 
     /**
-    * Method to find kth largest value in an array
+    * Method to find kth largest element in an array
     *
     * Pre-condition:
-    *       1. a is completely filled with integers between 0 and 99 inclusive
+    *       1. a is completely filled with integers
     *       2. Size of array > k
-    *       3. 0 < k < range of values in array
-    * Post-condition: The kth largest value is returned  
+    * Post-condition: The kth largest element is returned  
     */
 
     public static int kthLargest(int [] a, int k, PrintStream ps) {
-
-        int size = a.length;
 
         // Starting time
         long start = System.currentTimeMillis();
@@ -30,37 +27,53 @@ public class KthLargest {
         // Temporary maximum variable 
         int max = a[0];
 
+        // Variable responsible for finding kth largest element
+        int count = 0;
+
         // Finds the initial largest value
-        for (int i = 1; i < size; i++){
+        for (int i = 1; i < a.length; i++){
             if (a[i] > max){
                 max = a[i];
             }
         }
 
-        // Finds the largest value under the previous largest k-1 times
-        for (int j = 1; j < k; j++){
+        // Ensures that max is above any value in array
+        max++;
 
-            // Makes sure there are no duplicate values
-            int temp = 0;
+        // Instanciating variables for next part of algorithm
+        int index, tempmax;
 
-            // Finds the first value in array that is less than previous max
-            while (a[temp] >= max){
-                temp++;
+        // While k elements have not yet been examined
+        while (count < k){
+
+
+            // Ensures that testing value will always be under max
+            index = 0;
+            while (a[index] > max){
+                index++;
             }
 
-            // Testing value
-            int currmax = a[temp]; 
+            // tempmax is less than max
+            tempmax = a[index];
 
-            // finds max value under previous max
-            for (int i = temp; i < size; i++){
-                if (a[i] > currmax && a[i] < max){
-                    currmax = a[i];
+            // Finds largest value under max
+            for (int i = index; i < a.length; i++){
+                if (a[i] > tempmax && a[i] < max){
+                    tempmax = a[i];
                 }
             }
 
-            // New maximum for previous algorithm
-            max = currmax;
+            // Examines each element
+            for (int i = 0; i < a.length; i++){
 
+                // Increases counter if an instance of the value appears
+                if (a[i] == tempmax){
+                    count++;
+                }
+            }
+
+            // Ensures the loop runs with tempmax as the new maximum
+            max = tempmax;
         }
         
         // Stopping time, prints k and runtime
@@ -71,5 +84,4 @@ public class KthLargest {
         // Returns kth largest value
         return max;
     }
-  
 }   

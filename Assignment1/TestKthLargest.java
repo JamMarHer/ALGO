@@ -49,7 +49,7 @@ public class TestKthLargest {
             int sign = 1;
             if (rand.nextInt(2) == 0)
                 sign = -1;
-            numbers[i] = rand.nextInt(numbers.length * 2 / 3) * sign;
+            numbers[i] = rand.nextInt(100) * sign;
         }
     }
 
