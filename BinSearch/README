@@ -1,0 +1,52 @@
+BinTest.java
+/////////////////////
+Client code for testing binary search.
+Modified by L. Grabowski 2/12/2018
+/////////////////////
+
+Compilation:
+Compile along with your BinSearch class (starter file provided):
+javac BinTest.java BinSearch.java
+OR 
+javac *.java
+
+Run:
+java BinTest
+
+Success: 
+Below is sample output for a successful test run of the modified binary search
+
+*** Random array, size 1,000,000, find 9
+
+Using binSearch, smallest position of 9: 350944
+VERIFY: Using seqSearch, smallest position of 9: 350944
+BIN_CALLS 21
+SEQ_ITS 350945
+
+*** Array, size 1,000,000, all 9s,  find 9
+
+Using binSearch, smallest position of 9: 0
+VERIFY: Using seqSearch, smallest position of 9: 0
+BIN_CALLS 1
+SEQ_ITS 1
+
+*** Array, size 1,000,000, all 2s,  find 9
+
+Using binSearch, smallest position of 9: -1
+VERIFY: Using seqSearch, smallest position of 9: -1
+BIN_CALLS 21
+SEQ_ITS 1000000
+
+*** Array, size 1,000,000, all 2s except for one final 9,  find 9
+
+Using binSearch, smallest position of 9: 999999
+VERIFY: Using seqSearch, smallest position of 9: 999999
+BIN_CALLS 20
+SEQ_ITS 1000000
+
+*** Array, size 1,000,000, all 9s except for one 2 at the beginnng,  find 9
+
+Using binSearch, smallest position of 9: 1
+VERIFY: Using seqSearch, smallest position of 9: 1
+BIN_CALLS 20
+SEQ_ITS 2

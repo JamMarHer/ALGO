@@ -8,6 +8,10 @@
 import java.util.*;
 import java.io.*;
 
+// KthLargest Class
+//
+// Finds the kth largest value in an array of size n
+
 public class KthLargest {
 
     /**
